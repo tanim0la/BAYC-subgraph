@@ -1,0 +1,25 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: BoredApeYachtClub
+    network: mainnet
+    source:
+      address: "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
+      abi: BoredApeYachtClub
+      startBlock: 12287507
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Ape
+        - User
+      abis:
+        - name: BoredApeYachtClub
+          file: BoredApeYachtClub/abis/BoredApeYachtClub.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: BoredApeYachtClub/BoredApeYachtClub.wasm
